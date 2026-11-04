@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TWIN-LOG — 나는 어떤 캐릭터?</title>
+<link href="https://fonts.googleapis.com/css2?family=DotGothic16&subset=latin&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+
+</head>
+<body>
+
+<!-- 마퀴 -->
+<div class="marquee-wrap">
+  <div class="marquee-inner">
+    <span>✦ TWIN-LOG ✦ 나는 어떤 캐릭터? ✦ DAYE · SIEU · YUNA · RINA · MIAE · JIAE ✦ 우정의 기록 ✦ 6명 중 나와 닮은 애는? ✦ TWIN-LOG ✦ 나는 어떤 캐릭터? ✦ DAYE · SIEU · YUNA · RINA · MIAE · JIAE ✦ 우정의 기록 ✦ 6명 중 나와 닮은 애는? ✦ </span>
+    <span>✦ TWIN-LOG ✦ 나는 어떤 캐릭터? ✦ DAYE · SIEU · YUNA · RINA · MIAE · JIAE ✦ 우정의 기록 ✦ 6명 중 나와 닮은 애는? ✦ TWIN-LOG ✦ 나는 어떤 캐릭터? ✦ DAYE · SIEU · YUNA · RINA · MIAE · JIAE ✦ 우정의 기록 ✦ 6명 중 나와 닮은 애는? ✦ </span>
+  </div>
+</div>
+
+<!-- 헤더 -->
+<header>
+  <span class="header-deco" style="top:15%;left:5%;animation:float 2s ease-in-out infinite">✦</span>
+  <span class="header-deco" style="top:30%;left:20%;animation:float 2.5s ease-in-out infinite">★</span>
+  <span class="header-deco" style="top:10%;left:35%;animation:float 3s ease-in-out infinite">♡</span>
+  <span class="header-deco" style="top:50%;left:50%;animation:float 2s ease-in-out infinite">◆</span>
+  <span class="header-deco" style="top:20%;left:65%;animation:float 2.7s ease-in-out infinite">✿</span>
+  <span class="header-deco" style="top:40%;left:80%;animation:float 3.2s ease-in-out infinite">♪</span>
+  <div class="header-inner">
+    <div>
+      <div class="logo">✦ TWIN-LOG ✦</div>
+      <div class="logo-sub">나는 6명 중 누구랑 닮았을까?</div>
+    </div>
+    <div class="pair-badges">
+      <div class="pair-badge" style="background:#FF6D06">PAIR A</div>
+      <div class="pair-badge" style="background:#4455FA">PAIR B</div>
+      <div class="pair-badge" style="background:#FF87AF">PAIR C</div>
+    </div>
+  </div>
+</header>
+
+<div class="main-wrap">
+
+  <!-- ── MAIN ── -->
+  <div id="screen-main" class="screen active">
+
+    <!-- 히어로 -->
+    <div class="hero-box">
+      <div class="win-bar" style="background:#FF87AF">
+        <span>✦ TWIN-LOG — 메인</span>
+        <span class="blink">NEW!</span>
+      </div>
+      <div class="hero-grid">
+        <div class="hero-left">
+          <div class="hero-tag">♡ TWIN-LOG ♡</div>
+          <div class="hero-title">나와 닮은<br>캐릭터는 누구?</div>
+          <div class="hero-desc">세 개의 페어, 여섯 명의 캐릭터.<br>6개의 질문으로 알아보는 나와 가장 닮은 애.</div>
+          <button class="start-btn" onclick="startQuiz()">테스트 시작 →</button>
+        </div>
+        <div class="hero-right">
+          <div class="msg-label">📩 new message!</div>
+          <div class="msg-box">you have<br><strong>(1) new message</strong><br><br>"너 어떤 유형이야?"</div>
+          <button class="go-btn" onclick="startQuiz()">확인하러 가기</button>
+          <div style="font-size:9px;color:#aaa;margin-top:auto">♡ 친구한테 공유하기<br>✦ 페어 맞춰보기</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 캐릭터 카드 -->
+    <div class="section-head">
+      <div class="section-bar" style="background:#FF87AF"></div>
+      <span class="section-title">✦ 캐릭터 소개</span>
+    </div>
+    <div class="char-grid" id="char-grid"></div>
+
+    <!-- 페어 소개 -->
+    <div class="section-head">
+      <div class="section-bar" style="background:#4455FA"></div>
+      <span class="section-title">✦ PAIR 소개</span>
+    </div>
+    <div class="pair-grid" id="pair-grid"></div>
+
+    <!-- 핵심 장면 -->
+    <div class="scene-box">
+      <div class="win-bar" style="background:#4455FA">
+        <span>✦ 핵심 장면 미리보기</span>
+      </div>
+      <div class="scene-grid" id="scene-grid"></div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-box">
+      <div class="cta-title">✦ 나는 어떤 유형일까? ✦</div>
+      <div class="cta-sub">6개의 질문 · 6명의 캐릭터 · 3개의 페어</div>
+      <button class="start-btn" onclick="startQuiz()">테스트 시작하기 →</button>
+    </div>
+  </div>
+
+  <!-- ── QUIZ ── -->
+  <div id="screen-quiz" class="screen">
+    <div class="quiz-wrap">
+      <div class="quiz-box">
+        <div class="win-bar quiz-bar">
+          <span id="q-label">❓ Q1 / 6</span>
+          <span id="q-pct">0% 완료</span>
+        </div>
+        <div class="progress-track" id="progress-track"></div>
+        <div class="quiz-body">
+          <div class="quiz-q"><span class="quiz-q-num" id="q-num">Q1.</span><span id="q-text"></span></div>
+          <div id="ans-list"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── RESULT ── -->
+  <div id="screen-result" class="screen">
+    <div class="result-wrap">
+      <div class="result-header" id="result-header">
+        <div class="result-deco" style="top:20%;left:5%;animation:float 1.5s ease-in-out infinite">✦</div>
+        <div class="result-deco" style="top:40%;left:30%;animation:float 2s ease-in-out infinite">★</div>
+        <div class="result-deco" style="top:15%;left:55%;animation:float 2.5s ease-in-out infinite">♡</div>
+        <div class="result-deco" style="top:60%;left:78%;animation:float 2s ease-in-out infinite">◆</div>
+        <div class="result-pair-label" id="r-pair-label"></div>
+        <div class="result-name" id="r-name"></div>
+        <div class="result-keyword" id="r-keyword"></div>
+      </div>
+      <div class="result-grid">
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div class="result-icon-box" id="r-icon-box">
+            <div id="r-icon"></div>
+            <div class="result-icon-label" id="r-icon-label"></div>
+          </div>
+          <div class="result-stats" id="r-stats"></div>
+        </div>
+        <div class="result-right">
+          <div class="result-desc-box" id="r-desc-box">
+            <div class="result-desc-title" id="r-desc-title">✦ 캐릭터 설명</div>
+            <div class="result-desc-text" id="r-desc"></div>
+          </div>
+          <div class="result-partner" id="r-partner-box">
+            <div class="result-partner-label">페어 파트너</div>
+            <div class="result-partner-name" id="r-partner"></div>
+            <div class="result-partner-theme" id="r-theme"></div>
+          </div>
+        </div>
+      </div>
+      <div class="result-actions">
+        <div class="result-share">♡ 친구한테 공유하고 페어 맞춰봐 ♡</div>
+        <button class="btn-back" onclick="goMain()">메인으로</button>
+        <button class="btn-retry" onclick="startQuiz()">다시 하기</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>✦ TWIN-LOG</span>
+  <div class="footer-pairs">
+    <span>PAIR A</span><span>PAIR B</span><span>PAIR C</span>
+  </div>
+  <span class="blink">■</span>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
